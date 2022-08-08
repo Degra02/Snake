@@ -1,3 +1,0 @@
-/home/degra/Coding/C++/SnakeGame/CMakeFiles/SnakeGame.dir
-/home/degra/Coding/C++/SnakeGame/CMakeFiles/edit_cache.dir
-/home/degra/Coding/C++/SnakeGame/CMakeFiles/rebuild_cache.dir
