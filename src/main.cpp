@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <thread>
 
-
 int main() {
     sf::RenderWindow window(sf::VideoMode(1000, 800), "SnakeGame");
     sf::RectangleShape  rectangle({50, 100});
