@@ -5,6 +5,7 @@ Position::Position(int x, int y) {
     this->y = y;
 }
 
-void Position::updatePos() {
-
+void Position::updatePos(int* offsetValues) {
+    this->x += offsetValues[0];
+    this->y += offsetValues[1];
 }

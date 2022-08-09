@@ -4,7 +4,7 @@
 
 class BoardLogic {
 public:
-    int size;
+    const int size = 20;
     void drawBoard();
 };
 
