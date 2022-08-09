@@ -4,6 +4,6 @@ project(SnakeGame)
 set(CMAKE_CXX_STANDARD 17)
 find_package(SFML 2.5 COMPONENTS graphics audio system window)
 
-add_executable(SnakeGame src/main.cpp)
+add_executable(SnakeGame src/main.cpp src/Logic/BodyPiece.cpp)
 
 target_link_libraries(SnakeGame -lsfml-window -lsfml-graphics -lsfml-system)

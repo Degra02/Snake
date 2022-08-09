@@ -129,6 +129,30 @@ SnakeGame/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/build
 .PHONY : SnakeGame/fast
 
+src/Logic/BodyPiece.o: src/Logic/BodyPiece.cpp.o
+.PHONY : src/Logic/BodyPiece.o
+
+# target to build an object file
+src/Logic/BodyPiece.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.o
+.PHONY : src/Logic/BodyPiece.cpp.o
+
+src/Logic/BodyPiece.i: src/Logic/BodyPiece.cpp.i
+.PHONY : src/Logic/BodyPiece.i
+
+# target to preprocess a source file
+src/Logic/BodyPiece.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.i
+.PHONY : src/Logic/BodyPiece.cpp.i
+
+src/Logic/BodyPiece.s: src/Logic/BodyPiece.cpp.s
+.PHONY : src/Logic/BodyPiece.s
+
+# target to generate assembly for a file
+src/Logic/BodyPiece.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.s
+.PHONY : src/Logic/BodyPiece.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SnakeGame"
+	@echo "... src/Logic/BodyPiece.o"
+	@echo "... src/Logic/BodyPiece.i"
+	@echo "... src/Logic/BodyPiece.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/SnakeGame.dir/src/main.cpp.o -o SnakeGame  -lsfml-window -lsfml-graphics -lsfml-system 
+/usr/bin/c++ -g CMakeFiles/SnakeGame.dir/src/main.cpp.o CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.o -o SnakeGame  -lsfml-window -lsfml-graphics -lsfml-system 
