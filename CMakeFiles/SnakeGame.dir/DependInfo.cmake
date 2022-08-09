@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/degra/Coding/C++/SnakeGame/include/Direction.cpp" "CMakeFiles/SnakeGame.dir/include/Direction.cpp.o" "gcc" "CMakeFiles/SnakeGame.dir/include/Direction.cpp.o.d"
   "/home/degra/Coding/C++/SnakeGame/src/Logic/BoardLogic.cpp" "CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o" "gcc" "CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o.d"
   "/home/degra/Coding/C++/SnakeGame/src/Logic/BodyFull.cpp" "CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o" "gcc" "CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o.d"
   "/home/degra/Coding/C++/SnakeGame/src/Logic/BodyPiece.cpp" "CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.o" "gcc" "CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.o.d"

@@ -13,7 +13,7 @@ class BodyPiece {
     public:
         Pos position;
         BodyPiece(double size, sf::Color color, Pos position);
-        double* forward();
+        Pos forward(Pos nextPos);
 };
 
 

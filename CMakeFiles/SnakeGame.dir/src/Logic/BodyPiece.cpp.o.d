@@ -219,4 +219,5 @@ CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /home/degra/Coding/C++/SnakeGame/src/Logic/../../include/BodyPiece.h
+ /home/degra/Coding/C++/SnakeGame/src/Logic/../../include/BodyPiece.h \
+ /home/degra/Coding/C++/SnakeGame/src/Logic/../../include/Position.h

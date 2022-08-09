@@ -7,7 +7,8 @@ BodyPiece::BodyPiece(double size, sf::Color color, Pos position) {
     this->position = position;
 }
 
-double *BodyPiece::forward() {
+Pos BodyPiece::forward(Pos nextPos) {
     Pos prevPos = this->position;
-    this->position =
+    this->position = nextPos;
+    return prevPos;
 }

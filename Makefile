@@ -129,6 +129,30 @@ SnakeGame/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/build
 .PHONY : SnakeGame/fast
 
+include/Direction.o: include/Direction.cpp.o
+.PHONY : include/Direction.o
+
+# target to build an object file
+include/Direction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/include/Direction.cpp.o
+.PHONY : include/Direction.cpp.o
+
+include/Direction.i: include/Direction.cpp.i
+.PHONY : include/Direction.i
+
+# target to preprocess a source file
+include/Direction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/include/Direction.cpp.i
+.PHONY : include/Direction.cpp.i
+
+include/Direction.s: include/Direction.cpp.s
+.PHONY : include/Direction.s
+
+# target to generate assembly for a file
+include/Direction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SnakeGame.dir/build.make CMakeFiles/SnakeGame.dir/include/Direction.cpp.s
+.PHONY : include/Direction.cpp.s
+
 src/Logic/BoardLogic.o: src/Logic/BoardLogic.cpp.o
 .PHONY : src/Logic/BoardLogic.o
 
@@ -258,6 +282,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SnakeGame"
+	@echo "... include/Direction.o"
+	@echo "... include/Direction.i"
+	@echo "... include/Direction.s"
 	@echo "... src/Logic/BoardLogic.o"
 	@echo "... src/Logic/BoardLogic.i"
 	@echo "... src/Logic/BoardLogic.s"

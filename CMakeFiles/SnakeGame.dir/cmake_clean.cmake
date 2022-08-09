@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/SnakeGame.dir/include/Direction.cpp.o"
+  "CMakeFiles/SnakeGame.dir/include/Direction.cpp.o.d"
   "CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o"
   "CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o.d"
   "CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o"

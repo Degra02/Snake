@@ -5,8 +5,7 @@
 class BoardLogic {
 public:
     int size;
-
-    void updateBoard();
+    void drawBoard();
 };
 
 
