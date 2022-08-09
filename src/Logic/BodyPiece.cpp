@@ -7,6 +7,15 @@ BodyPiece::BodyPiece(double size, sf::Color color, Pos position) {
     this->position = position;
 }
 
+BodyPiece::BodyPiece() {
+
+}
+
+BodyPiece::BodyPiece(Pos position) {
+    this->position = position;
+    // this->color = sf::Color::White;
+}
+
 Pos BodyPiece::forward(Pos nextPos) {
     Pos prevPos = this->position;
     this->position = nextPos;

@@ -12,6 +12,8 @@ class BodyPiece {
 
     public:
         Pos position;
+        BodyPiece();
+        explicit BodyPiece(Pos position);
         BodyPiece(double size, sf::Color color, Pos position);
         Pos forward(Pos nextPos);
 };

@@ -12,6 +12,8 @@ private:
 public:
     Position(int x, int y);
     void updatePos(int* offsetValues);
+    int getX() const;
+    int getY() const;
 };
 
 typedef Position* Pos;

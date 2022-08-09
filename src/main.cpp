@@ -1,7 +1,15 @@
 #include <SFML/Graphics.hpp>
 #include <thread>
+#include "../include/BodyFull.h"
 
 int main() {
+
+    BodyFull snake = BodyFull(5);
+    for (auto const &piece: snake.getPieces()) {
+        printf("\n %d %d", piece.position->getX(), piece.position->getY());
+    }
+
+    /**
     sf::RenderWindow window(sf::VideoMode(1000, 800), "SnakeGame");
     sf::RectangleShape  rectangle({50, 100});
     rectangle.setFillColor(sf::Color::Green);
@@ -29,7 +37,7 @@ int main() {
         window.clear();
         window.draw(rectangle);
         window.display();
-    }
+    }**/
 
 
     return 0;
