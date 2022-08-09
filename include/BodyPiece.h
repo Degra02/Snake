@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "Position.h"
 
 #ifndef SNAKEGAME_BODYPIECE_H
 #define SNAKEGAME_BODYPIECE_H
@@ -10,9 +11,9 @@ class BodyPiece {
         sf::Color color;
 
     public:
-        double* position;
-        BodyPiece(double size, sf::Color color, double* position);
-
+        Pos position;
+        BodyPiece(double size, sf::Color color, Pos position);
+        double* forward();
 };
 
 

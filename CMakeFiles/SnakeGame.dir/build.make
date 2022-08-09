@@ -97,19 +97,67 @@ CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/degra/Coding/C++/SnakeGame/src/Logic/BodyPiece.cpp -o CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.s
 
+CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.o: CMakeFiles/SnakeGame.dir/flags.make
+CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.o: src/Logic/Position.cpp
+CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.o: CMakeFiles/SnakeGame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/degra/Coding/C++/SnakeGame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.o -MF CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.o.d -o CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.o -c /home/degra/Coding/C++/SnakeGame/src/Logic/Position.cpp
+
+CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/degra/Coding/C++/SnakeGame/src/Logic/Position.cpp > CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.i
+
+CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/degra/Coding/C++/SnakeGame/src/Logic/Position.cpp -o CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.s
+
+CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o: CMakeFiles/SnakeGame.dir/flags.make
+CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o: src/Logic/BoardLogic.cpp
+CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o: CMakeFiles/SnakeGame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/degra/Coding/C++/SnakeGame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o -MF CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o.d -o CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o -c /home/degra/Coding/C++/SnakeGame/src/Logic/BoardLogic.cpp
+
+CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/degra/Coding/C++/SnakeGame/src/Logic/BoardLogic.cpp > CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.i
+
+CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/degra/Coding/C++/SnakeGame/src/Logic/BoardLogic.cpp -o CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.s
+
+CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o: CMakeFiles/SnakeGame.dir/flags.make
+CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o: src/Logic/BodyFull.cpp
+CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o: CMakeFiles/SnakeGame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/degra/Coding/C++/SnakeGame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o -MF CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o.d -o CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o -c /home/degra/Coding/C++/SnakeGame/src/Logic/BodyFull.cpp
+
+CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/degra/Coding/C++/SnakeGame/src/Logic/BodyFull.cpp > CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.i
+
+CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/degra/Coding/C++/SnakeGame/src/Logic/BodyFull.cpp -o CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.s
+
 # Object files for target SnakeGame
 SnakeGame_OBJECTS = \
 "CMakeFiles/SnakeGame.dir/src/main.cpp.o" \
-"CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.o"
+"CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.o" \
+"CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.o" \
+"CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o" \
+"CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o"
 
 # External object files for target SnakeGame
 SnakeGame_EXTERNAL_OBJECTS =
 
 SnakeGame: CMakeFiles/SnakeGame.dir/src/main.cpp.o
 SnakeGame: CMakeFiles/SnakeGame.dir/src/Logic/BodyPiece.cpp.o
+SnakeGame: CMakeFiles/SnakeGame.dir/src/Logic/Position.cpp.o
+SnakeGame: CMakeFiles/SnakeGame.dir/src/Logic/BoardLogic.cpp.o
+SnakeGame: CMakeFiles/SnakeGame.dir/src/Logic/BodyFull.cpp.o
 SnakeGame: CMakeFiles/SnakeGame.dir/build.make
 SnakeGame: CMakeFiles/SnakeGame.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/degra/Coding/C++/SnakeGame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SnakeGame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/degra/Coding/C++/SnakeGame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable SnakeGame"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SnakeGame.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
