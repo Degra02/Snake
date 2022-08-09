@@ -1,5 +1,0 @@
-/home/degra/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5921.27/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /home/degra/Coding/C++/SnakeGame -B /home/degra/Coding/C++/SnakeGame
--- Found SFML 2.5.1 in /usr/lib64/cmake/SFML
--- Configuring done
--- Generating done
--- Build files have been written to: /home/degra/Coding/C++/SnakeGame

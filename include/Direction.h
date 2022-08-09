@@ -6,7 +6,7 @@ enum dir{
 };
 
 class Direction {
-    
+
 };
 
 
