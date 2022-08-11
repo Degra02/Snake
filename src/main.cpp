@@ -5,8 +5,8 @@
 int main() {
 
     BodyFull snake = BodyFull(5);
-    for (auto const &piece: snake.getPieces()) {
-        printf("\n %d %d", piece.position->getX(), piece.position->getY());
+    for (auto &piece: snake.getPieces()) {
+        printf("\n %d %d", piece.getPosition().getX(), piece.getPosition().getY());
     }
 
     /**

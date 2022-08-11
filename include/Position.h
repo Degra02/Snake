@@ -10,12 +10,11 @@ private:
     int y;
 
 public:
+    Position();
     Position(int x, int y);
-    void updatePos(int* offsetValues);
+    void updatePos(const int* offsetValues);
     int getX() const;
     int getY() const;
 };
-
-typedef Position* Pos;
 
 #endif //SNAKEGAME_POSITION_H

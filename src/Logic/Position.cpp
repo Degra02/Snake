@@ -1,11 +1,14 @@
 #include "../../include/Position.h"
 
+Position::Position() {
+}
+
 Position::Position(int x, int y) {
     this->x = x;
     this->y = y;
 }
 
-void Position::updatePos(int* offsetValues) {
+void Position::updatePos(const int* offsetValues) {
     this->x += offsetValues[0];
     this->y += offsetValues[1];
 }

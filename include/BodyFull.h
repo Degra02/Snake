@@ -14,7 +14,7 @@ private:
 public:
     explicit BodyFull(int length);
     void moveSnake(Direction direction);
-    void initSnakeBody(Pos position);
+    void initSnakeBody(Position position);
     std::list<BodyPiece> getPieces();
 };
 

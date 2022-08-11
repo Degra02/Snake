@@ -8,14 +8,15 @@
 class BodyPiece {
     private:
         double size;
+        Position position;
         sf::Color color;
-
-    public:
-        Pos position;
+public:
         BodyPiece();
-        explicit BodyPiece(Pos position);
-        BodyPiece(double size, sf::Color color, Pos position);
-        Pos forward(Pos nextPos);
+        explicit BodyPiece(Position position);
+        BodyPiece(double size, sf::Color color, Position position);
+        Position forward(Position nextPos);
+        Position getPosition();
+        void setPosition(Position position);
 };
 
 

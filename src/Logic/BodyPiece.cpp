@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "../../include/BodyPiece.h"
 
-BodyPiece::BodyPiece(double size, sf::Color color, Pos position) {
+BodyPiece::BodyPiece(double size, sf::Color color, Position position) {
     this->size = size;
     this->color = color;
     this->position = position;
@@ -11,13 +11,20 @@ BodyPiece::BodyPiece() {
 
 }
 
-BodyPiece::BodyPiece(Pos position) {
+BodyPiece::BodyPiece(Position position) {
     this->position = position;
-    // this->color = sf::Color::White;
 }
 
-Pos BodyPiece::forward(Pos nextPos) {
-    Pos prevPos = this->position;
+Position BodyPiece::forward(Position nextPos) {
+    Position prevPos = this->position;
     this->position = nextPos;
     return prevPos;
+}
+
+Position BodyPiece::getPosition() {
+    return this->position;
+}
+
+void BodyPiece::setPosition(Position position) {
+     this->position = position;
 }
