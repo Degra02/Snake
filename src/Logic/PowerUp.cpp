@@ -16,6 +16,12 @@ PowerUp::PowerUp(const int *coordinates) {
 }
 
 void PowerUp::newCoords() {
+    /**
+     *
+        Should use the <random> C++11 library for "true" randomness.
+        Will maybe change in the future
+
+    **/
     this->coordinates[0] = rand() % 20;
     this->coordinates[1] = rand() % 20;
 }
