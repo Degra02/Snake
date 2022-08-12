@@ -3,11 +3,14 @@
 #include "../include/BodyFull.h"
 
 int main() {
-
+    srand(time(0));
     BodyFull snake = BodyFull(5);
     for (auto &piece: snake.getPieces()) {
         printf("\n %d %d", piece.getPosition().getX(), piece.getPosition().getY());
     }
+
+    // The eaten piece doesn't immediately appear on screen, it waits for the end of the
+    // snake body to get added to it
 
     /**
     sf::RenderWindow window(sf::VideoMode(1000, 800), "SnakeGame");

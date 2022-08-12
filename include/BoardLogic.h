@@ -2,10 +2,16 @@
 #define SNAKEGAME_BOARDLOGIC_H
 
 
+#include "BodyFull.h"
+
 class BoardLogic {
+private:
+    BodyFull snake;
+
+
 public:
     const int size = 20;
-    void drawBoard();
+    BoardLogic* buildBoard();
 };
 
 
