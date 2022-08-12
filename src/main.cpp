@@ -2,6 +2,8 @@
 #include <thread>
 #include "../include/BodyFull.h"
 
+#define SIZE 6
+
 int main() {
     srand(time(0));
     BodyFull snake = BodyFull(5);
@@ -12,16 +14,23 @@ int main() {
     // The eaten piece doesn't immediately appear on screen, it waits for the end of the
     // snake body to get added to it
 
+    sf::RenderWindow window(sf::VideoMode(1000, 1000), "SnakeGame");
 
-    sf::RenderWindow window(sf::VideoMode(1000, 800), "SnakeGame");
+    // Just for testing purposes
 
-    sf::RectangleShape  rectangle({50, 50});
-    rectangle.setFillColor(sf::Color::White);
-    rectangle.setPosition(window.getSize().x/2, window.getSize().y/2);
+    int initialOffset = 0;
+    sf::RectangleShape snakeBody[SIZE];
 
+    for(int i = 0; i < SIZE; i++){
+        snakeBody[i] = sf::RectangleShape({50, 50});
+        snakeBody[i].setFillColor(sf::Color::White);
+        snakeBody[i].setPosition(window.getSize().x/2 + initialOffset, window.getSize().y/2);
+        initialOffset -= 50;
+    }
 
     sf::Vector2<float> offset = {0, 0};
     int frame = 0;
+    bool keyPressed = false;
     while (window.isOpen()){
         sf::Event event{};
         while(window.pollEvent(event)){
@@ -33,6 +42,7 @@ int main() {
                 }
 
                 case sf::Event::KeyPressed:{
+                    keyPressed = true;
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
                         offset = {0, -50};
                     } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
@@ -50,12 +60,21 @@ int main() {
         }
         window.clear();
 
-        if (frame % 1920 == 0){
-            rectangle.move(offset);
+        if (frame % 1920 == 0 && keyPressed){
+            printf("\n\n\n");
+            for(int i = SIZE-1; i > 0; --i){
+                snakeBody[i].setPosition(snakeBody[i-1].getPosition());
+            }
+            snakeBody[0].move(offset);
         }
-        frame++;
 
-        window.draw(rectangle);
+        for(const auto & i : snakeBody){
+            window.draw(i);
+            if(frame % 1920 == 0)
+                printf("\n%f %f", i.getPosition().x, i.getPosition().y);
+        }
+
+        frame++;
         window.display();
     }
 
