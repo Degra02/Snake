@@ -12,35 +12,52 @@ int main() {
     // The eaten piece doesn't immediately appear on screen, it waits for the end of the
     // snake body to get added to it
 
-    /**
+
     sf::RenderWindow window(sf::VideoMode(1000, 800), "SnakeGame");
-    sf::RectangleShape  rectangle({50, 100});
-    rectangle.setFillColor(sf::Color::Green);
+
+    sf::RectangleShape  rectangle({50, 50});
+    rectangle.setFillColor(sf::Color::White);
     rectangle.setPosition(window.getSize().x/2, window.getSize().y/2);
 
-    auto rectangleRotate = [](sf::RectangleShape *shape){
-        int i = 0;
-        while (true){
-            shape->rotate(i/100000);
-            i++;
-        }
-    };
 
-    std::thread first(rectangleRotate, &rectangle);
-    first.detach();
-
+    sf::Vector2<float> offset = {0, 0};
+    int frame = 0;
     while (window.isOpen()){
         sf::Event event{};
         while(window.pollEvent(event)){
-            if(event.type == sf::Event::Closed) {
-                window.close();
+            switch (event.type) {
+                case sf::Event::Closed:{
+                    // Put a confirmation window here
+                    window.close();
+                    break;
+                }
+
+                case sf::Event::KeyPressed:{
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+                        offset = {0, -50};
+                    } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+                        offset = {0, 50};
+                    } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+                        offset = {-50, 0};
+                    } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+                        offset = {50, 0};
+                    }
+                }
+
+                default:
+                    break;
             }
         }
-
         window.clear();
+
+        if (frame % 1920 == 0){
+            rectangle.move(offset);
+        }
+        frame++;
+
         window.draw(rectangle);
         window.display();
-    }**/
+    }
 
 
     return 0;
