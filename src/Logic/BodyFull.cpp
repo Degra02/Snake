@@ -1,34 +1,30 @@
 #include "../../include/BodyFull.h"
 
-BodyFull::BodyFull(int length) {
+BodyFull::BodyFull(int length, int size, sf::Vector2<float> headPos) {
     this->length = length;
-    this->pieces.emplace_back(BodyPiece(Position(10, 10)));
-    initSnakeBody(this->pieces.begin()->getPosition());
+    this->size = size;
+    this->pieces.emplace_back(headPos, size);
+    initSnakeBody();
 }
 
-void BodyFull::initSnakeBody(Position position){
-    static int offset[] = {-1, 0};
+void BodyFull::initSnakeBody(){
+    sf::Vector2<float> offset = {-50, 0};
+    sf::Vector2<float> pos = this->pieces.begin()->getPosition();
     for (int i = 1; i < this->length; ++i) {
-        this->pieces.emplace_back(BodyPiece());
-    }
-    Position p = Position(position.getX(), position.getY());
-    for (auto & piece: this->pieces) {
-        p.updatePos(offset);
-        piece = BodyPiece(p);
+        pos += offset;
+        this->pieces.emplace_back(pos, this->size);
     }
 }
 
-void BodyFull::moveSnake(Direction direction) {
-    this->pieces.begin()->getPosition().updatePos(direction.offsetValue());
-
-    std::list<BodyPiece>::iterator it;
-    it = this->pieces.end();
-    while (it.operator--() != this->pieces.begin()){
-        it->setPosition(it.operator--()->getPosition());
-    }
+int BodyFull::getLength() {
+    return this->length;
 }
 
-std::list<BodyPiece> BodyFull::getPieces() {
+std::list<BodyPiece>& BodyFull::getPieces() {
     return this->pieces;
+}
+
+void BodyFull::addPiece(sf::Vector2<float> pos) {
+    this->pieces.emplace_back(pos, this->size);
 }
 

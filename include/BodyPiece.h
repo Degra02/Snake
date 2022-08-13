@@ -1,22 +1,13 @@
 #include <SFML/Graphics.hpp>
-#include "Position.h"
 
 #ifndef SNAKEGAME_BODYPIECE_H
 #define SNAKEGAME_BODYPIECE_H
 
 
-class BodyPiece {
-    private:
-        double size;
-        Position position;
-        sf::Color color;
+class BodyPiece : public sf::RectangleShape{
 public:
         BodyPiece();
-        explicit BodyPiece(Position position);
-        BodyPiece(double size, sf::Color color, Position position);
-        Position forward(Position nextPos);
-        Position getPosition();
-        void setPosition(Position position);
+        BodyPiece(sf::Vector2<float> position, int size);
 };
 
 

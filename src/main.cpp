@@ -1,36 +1,34 @@
 #include <SFML/Graphics.hpp>
-#include <thread>
 #include "../include/BodyFull.h"
+#include "../include/Food.h"
 
-#define SIZE 6
+#define BODY_SIZE 50
+#define ROWS 30
+#define COLUMNS 20
+#define X_SIZE (ROWS * BODY_SIZE)
+#define Y_SIZE (COLUMNS * BODY_SIZE)
+
+bool checkCollision(std::list<BodyPiece>& body);
+bool checkFoodEaten(std::list<BodyPiece>& body, sf::Vector2<float> foodPos);
+bool outOfBoundaries(sf::Vector2<float> headPos);
 
 int main() {
-    srand(time(0));
-    BodyFull snake = BodyFull(5);
-    for (auto &piece: snake.getPieces()) {
-        printf("\n %d %d", piece.getPosition().getX(), piece.getPosition().getY());
-    }
-
+    srand(time(nullptr));
     // The eaten piece doesn't immediately appear on screen, it waits for the end of the
     // snake body to get added to it
 
-    sf::RenderWindow window(sf::VideoMode(1000, 1000), "SnakeGame");
+    sf::RenderWindow window(sf::VideoMode(X_SIZE, Y_SIZE), "SnakeGame");
+    BodyFull snake = BodyFull(7, BODY_SIZE, {X_SIZE / 2, Y_SIZE / 2});
 
-    // Just for testing purposes
-
-    int initialOffset = 0;
-    sf::RectangleShape snakeBody[SIZE];
-
-    for(int i = 0; i < SIZE; i++){
-        snakeBody[i] = sf::RectangleShape({50, 50});
-        snakeBody[i].setFillColor(sf::Color::White);
-        snakeBody[i].setPosition(window.getSize().x/2 + initialOffset, window.getSize().y/2);
-        initialOffset -= 50;
-    }
+    Food food = Food(ROWS, COLUMNS, BODY_SIZE);
+    food.newPos();
+    printf("%f, %f", food.getPosition().x, food.getPosition().y);
 
     sf::Vector2<float> offset = {0, 0};
     int frame = 0;
-    bool keyPressed = false;
+    bool keyPressed = false, foodEaten = false;
+    sf::Vector2<float> tailPos;
+
     while (window.isOpen()){
         sf::Event event{};
         while(window.pollEvent(event)){
@@ -60,19 +58,35 @@ int main() {
         }
         window.clear();
 
-        if (frame % 1920 == 0 && keyPressed){
-            printf("\n\n\n");
-            for(int i = SIZE-1; i > 0; --i){
-                snakeBody[i].setPosition(snakeBody[i-1].getPosition());
+        if ((frame % 500  == 0) && keyPressed) {
+            tailPos = snake.getPieces().end().operator--()->getPosition();
+            for (std::_List_iterator<BodyPiece> it = snake.getPieces().end().operator--();
+                 it != snake.getPieces().begin(); --it) {
+                it->setPosition(std::prev(it)->getPosition());
             }
-            snakeBody[0].move(offset);
+            if (foodEaten){
+                snake.addPiece(tailPos);
+                foodEaten = false;
+            }
+            snake.getPieces().begin()->move(offset);
         }
 
-        for(const auto & i : snakeBody){
-            window.draw(i);
-            if(frame % 1920 == 0)
-                printf("\n%f %f", i.getPosition().x, i.getPosition().y);
+
+        if (checkFoodEaten(snake.getPieces(), food.getPosition())){
+            foodEaten = true;
+            food.newPos();
         }
+
+        if (checkCollision(snake.getPieces()) && keyPressed)
+            window.close();
+
+        if (outOfBoundaries(snake.getPieces().begin()->getPosition()))
+            window.close();
+
+        for(const auto & i : snake.getPieces()){
+            window.draw(i);
+        }
+        window.draw(food);
 
         frame++;
         window.display();
@@ -80,4 +94,28 @@ int main() {
 
 
     return 0;
+}
+
+bool checkCollision(std::list<BodyPiece>& body){
+    sf::Vector2<float> headPos = body.begin()->getPosition();
+    for (std::_List_iterator<BodyPiece> piece = ++body.begin(); piece != body.end() ; ++piece) {
+        if (piece->getPosition().x == headPos.x && piece->getPosition().y == headPos.y)
+            return true;
+    }
+    return false;
+}
+
+bool checkFoodEaten(std::list<BodyPiece>& body, sf::Vector2<float> foodPos){
+    if(body.begin()->getPosition().x == foodPos.x &&
+        body.begin()->getPosition().y == foodPos.y)
+        return true;
+
+    return false;
+}
+
+bool outOfBoundaries(sf::Vector2<float> headPos){
+    if(headPos.x >= X_SIZE || headPos.x < 0 || headPos.y >= Y_SIZE || headPos.y < 0)
+        return true;
+
+    return false;
 }
