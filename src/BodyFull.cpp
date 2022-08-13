@@ -1,4 +1,4 @@
-#include "../../include/BodyFull.h"
+#include "../include/BodyFull.h"
 
 BodyFull::BodyFull(int length, int size, sf::Vector2<float> headPos) {
     this->length = length;

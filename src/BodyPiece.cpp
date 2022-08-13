@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "../../include/BodyPiece.h"
+#include "../include/BodyPiece.h"
 
 BodyPiece::BodyPiece() {
     this->setFillColor(sf::Color::White);

@@ -22,7 +22,8 @@ int main() {
 
     Food food = Food(ROWS, COLUMNS, BODY_SIZE);
     food.newPos();
-    printf("%f, %f", food.getPosition().x, food.getPosition().y);
+
+    std::list<sf::Vector2<float>> piecesToAdd;
 
     sf::Vector2<float> offset = {0, 0};
     int frame = 0;
@@ -71,7 +72,7 @@ int main() {
             snake.getPieces().begin()->move(offset);
         }
 
-
+        //TODO: create an array of "pieces to add", with the position where the piece has to be added.
         if (checkFoodEaten(snake.getPieces(), food.getPosition())){
             foodEaten = true;
             food.newPos();

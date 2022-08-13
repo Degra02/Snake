@@ -1,4 +1,4 @@
-#include "../../include/Food.h"
+#include "../include/Food.h"
 
 Food::Food(int xSize, int ySize, int bodySize) {
     this->xSize = xSize;
