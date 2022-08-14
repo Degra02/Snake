@@ -1,5 +1,5 @@
 # Snake Game
-Snake game written in C++ using SFML.
+Snake game written in C++ using [SFML](https://github.com/SFML/SFML).
 
 ## How to build
 
