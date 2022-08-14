@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include "../include/BodyFull.h"
 #include "../include/Food.h"
+#include <thread>
+#include <functional>
 
 #define BODY_SIZE 50
 #define ROWS 30
@@ -13,6 +15,7 @@ bool checkFoodEaten(std::list<BodyPiece>& body, sf::Vector2<float> foodPos);
 bool outOfBoundaries(sf::Vector2<float> headPos);
 bool equalPos(sf::Vector2<float> p1, sf::Vector2<float> p2);
 bool validFoodPos(sf::Vector2<float> foodPos, std::list<BodyPiece>& pieces);
+void mainThread(sf::RenderWindow* window);
 
 int main() {
     srand(time(nullptr));
@@ -22,7 +25,47 @@ int main() {
     sf::Font font;
     font.loadFromFile("04B_30__.TTF");
 
-    unsigned int s = 0;
+    sf::Thread game(mainThread, &window);
+    game.launch();
+
+    bool playAgain = false;
+
+    do{
+        game.wait();
+
+        while (window.isOpen()){
+            sf::Event event{};
+            while(window.pollEvent(event)){
+                switch (event.type) {
+                    case sf::Event::Closed:{
+                        window.close();
+                        break;
+                    }
+
+                    case sf::Event::KeyPressed:{
+                        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y)){
+                            playAgain = true;
+                        } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::N)){
+                            playAgain = false;
+                        }
+                    }
+
+                    default:
+                        break;
+                }
+            }
+
+            window.display();
+        }
+    }while(playAgain);
+
+    return 0;
+}
+
+void mainThread(sf::RenderWindow* window){
+    sf::Font font;
+    font.loadFromFile("04B_30__.TTF");
+
     sf::Text score;
     score.setPosition(50, 50);
     score.setCharacterSize(35);
@@ -37,19 +80,22 @@ int main() {
 
     unsigned int gameSpeed = 5;
 
+    unsigned int s = 0;
+
     sf::Vector2<float> offset = {0, 0};
     int frame = 0;
     bool keyPressed = false;
     sf::Vector2<float> tailPos;
 
-    while (window.isOpen()){
+    bool endGame = false;
+
+    while (window->isOpen() && !endGame){
         sf::Event event{};
-        while(window.pollEvent(event)){
+        while(window->pollEvent(event)){
             switch (event.type) {
                 case sf::Event::Closed:{
                     // Put a confirmation window here
-                    window.close();
-                    break;
+                    return;
                 }
 
                 case sf::Event::KeyPressed:{
@@ -69,7 +115,7 @@ int main() {
                     break;
             }
         }
-        window.clear();
+        window->clear();
 
         if ((frame % (gameSpeed * 100)  == 0) && keyPressed) {
             tailPos = snake.getPieces().end().operator--()->getPosition();
@@ -96,23 +142,28 @@ int main() {
             }while(!validFoodPos(food.getPosition(), snake.getPieces()));
         }
 
-        if (checkCollision(snake.getPieces()) && keyPressed)
-            window.close();
+        if (checkCollision(snake.getPieces()) && keyPressed){
+            endGame = true;
+        }
 
-        if (outOfBoundaries(snake.getPieces().begin()->getPosition()))
-            window.close();
+        if (outOfBoundaries(snake.getPieces().begin()->getPosition())){
+            endGame = true;
+        }
 
         for(const auto & i : snake.getPieces()){
-            window.draw(i);
+            window->draw(i);
         }
-        window.draw(food);
-        window.draw(score);
+        window->draw(food);
+        window->draw(score);
 
         frame++;
-        window.display();
-    }
 
-    return 0;
+        if(endGame){
+            window->clear(sf::Color::Black);
+        }
+
+        window->display();
+    }
 }
 
 bool checkCollision(std::list<BodyPiece>& body){
