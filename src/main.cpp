@@ -15,25 +15,35 @@ bool checkFoodEaten(std::list<BodyPiece>& body, sf::Vector2<float> foodPos);
 bool outOfBoundaries(sf::Vector2<float> headPos);
 bool equalPos(sf::Vector2<float> p1, sf::Vector2<float> p2);
 bool validFoodPos(sf::Vector2<float> foodPos, std::list<BodyPiece>& pieces);
-void mainThread(sf::RenderWindow* window);
+void game(sf::RenderWindow* window);
 
 int main() {
     srand(time(nullptr));
 
     sf::RenderWindow window(sf::VideoMode(X_SIZE, Y_SIZE), "SnakeGame");
-
     sf::Font font;
     font.loadFromFile("04B_30__.TTF");
 
-    sf::Thread game(mainThread, &window);
-    game.launch();
+    sf::Text loseScreen;
+    loseScreen.setCharacterSize(50);
+    loseScreen.setFont(font);
+    loseScreen.setString("\t Play Again?\nPress y (yes) or n (no)");
+    loseScreen.setPosition(window.getSize().x/2 - 450,
+                           window.getSize().y/2 - 150);
 
-    bool playAgain = false;
+    sf::Thread gameThread(game, &window);
+
+    bool playAgain;
 
     do{
-        game.wait();
+        playAgain = false;
+        gameThread.launch();
+        gameThread.wait();
+        window.clear();
+        window.draw(loseScreen);
+        window.display();
 
-        while (window.isOpen()){
+        while (window.isOpen() && !playAgain){
             sf::Event event{};
             while(window.pollEvent(event)){
                 switch (event.type) {
@@ -47,6 +57,7 @@ int main() {
                             playAgain = true;
                         } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::N)){
                             playAgain = false;
+                            window.close();
                         }
                     }
 
@@ -54,15 +65,13 @@ int main() {
                         break;
                 }
             }
-
-            window.display();
         }
     }while(playAgain);
 
     return 0;
 }
 
-void mainThread(sf::RenderWindow* window){
+void game(sf::RenderWindow* window){
     sf::Font font;
     font.loadFromFile("04B_30__.TTF");
 
