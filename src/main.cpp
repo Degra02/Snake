@@ -11,23 +11,35 @@
 bool checkCollision(std::list<BodyPiece>& body);
 bool checkFoodEaten(std::list<BodyPiece>& body, sf::Vector2<float> foodPos);
 bool outOfBoundaries(sf::Vector2<float> headPos);
+bool equalPos(sf::Vector2<float> p1, sf::Vector2<float> p2);
+bool validFoodPos(sf::Vector2<float> foodPos, std::list<BodyPiece>& pieces);
 
 int main() {
     srand(time(nullptr));
-    // The eaten piece doesn't immediately appear on screen, it waits for the end of the
-    // snake body to get added to it
 
     sf::RenderWindow window(sf::VideoMode(X_SIZE, Y_SIZE), "SnakeGame");
-    BodyFull snake = BodyFull(7, BODY_SIZE, {X_SIZE / 2, Y_SIZE / 2});
+
+    sf::Font font;
+    font.loadFromFile("04B_30__.TTF");
+
+    unsigned int s = 0;
+    sf::Text score;
+    score.setPosition(50, 50);
+    score.setCharacterSize(35);
+    score.setFont(font);
+
+    BodyFull snake = BodyFull(1, BODY_SIZE, {X_SIZE / 2, Y_SIZE / 2});
 
     Food food = Food(ROWS, COLUMNS, BODY_SIZE);
     food.newPos();
 
     std::list<sf::Vector2<float>> piecesToAdd;
 
+    unsigned int gameSpeed = 5;
+
     sf::Vector2<float> offset = {0, 0};
     int frame = 0;
-    bool keyPressed = false, foodEaten = false;
+    bool keyPressed = false;
     sf::Vector2<float> tailPos;
 
     while (window.isOpen()){
@@ -59,23 +71,29 @@ int main() {
         }
         window.clear();
 
-        if ((frame % 500  == 0) && keyPressed) {
+        if ((frame % (gameSpeed * 100)  == 0) && keyPressed) {
             tailPos = snake.getPieces().end().operator--()->getPosition();
             for (std::_List_iterator<BodyPiece> it = snake.getPieces().end().operator--();
                  it != snake.getPieces().begin(); --it) {
                 it->setPosition(std::prev(it)->getPosition());
             }
-            if (foodEaten){
-                snake.addPiece(tailPos);
-                foodEaten = false;
+            if (!piecesToAdd.empty()){
+                if(equalPos(tailPos, *piecesToAdd.begin())){
+                    snake.addPiece(tailPos);
+                    piecesToAdd.pop_front();
+                }
             }
             snake.getPieces().begin()->move(offset);
         }
 
-        //TODO: create an array of "pieces to add", with the position where the piece has to be added.
         if (checkFoodEaten(snake.getPieces(), food.getPosition())){
-            foodEaten = true;
-            food.newPos();
+            s++;
+            score.setString(std::to_string(s));
+
+            piecesToAdd.emplace_back(food.getPosition());
+            do{
+                food.newPos();
+            }while(!validFoodPos(food.getPosition(), snake.getPieces()));
         }
 
         if (checkCollision(snake.getPieces()) && keyPressed)
@@ -88,11 +106,11 @@ int main() {
             window.draw(i);
         }
         window.draw(food);
+        window.draw(score);
 
         frame++;
         window.display();
     }
-
 
     return 0;
 }
@@ -119,4 +137,16 @@ bool outOfBoundaries(sf::Vector2<float> headPos){
         return true;
 
     return false;
+}
+
+bool equalPos(sf::Vector2<float> p1, sf::Vector2<float> p2){
+    return (p1.x == p2.x && p1.y == p2.y);
+}
+
+bool validFoodPos(sf::Vector2<float> foodPos, std::list<BodyPiece>& pieces){
+    for(auto const &piece: pieces){
+        if(equalPos(piece.getPosition(), foodPos))
+            return false;
+    }
+    return true;
 }
