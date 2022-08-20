@@ -110,12 +110,20 @@ void game(sf::RenderWindow* window){
                 case sf::Event::KeyPressed:{
                     keyPressed = true;
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+                        if(equalPos(offset, {0, 50}))
+                            break;
                         offset = {0, -50};
                     } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+                        if(equalPos(offset, {0, -50}))
+                            break;
                         offset = {0, 50};
                     } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+                        if(equalPos(offset, {50, 0}))
+                            break;
                         offset = {-50, 0};
                     } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+                        if(equalPos(offset, {-50, 0}))
+                            break;
                         offset = {50, 0};
                     }
                 }
