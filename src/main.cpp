@@ -3,6 +3,9 @@
 #include "../include/Food.h"
 #include <thread>
 #include <functional>
+#include <cmath>
+
+#define GAME_SPEED 50
 
 #define BODY_SIZE 50
 #define ROWS 30
@@ -87,8 +90,6 @@ void game(sf::RenderWindow* window){
 
     std::list<sf::Vector2<float>> piecesToAdd;
 
-    unsigned int gameSpeed = 5;
-
     unsigned int s = 0;
 
     sf::Vector2<float> offset = {0, 0};
@@ -134,7 +135,7 @@ void game(sf::RenderWindow* window){
         }
         window->clear();
 
-        if ((frame % (gameSpeed * 100)  == 0) && keyPressed) {
+        if ((frame % GAME_SPEED * 100  == 0) && keyPressed) {
             tailPos = snake.getPieces().end().operator--()->getPosition();
             for (std::_List_iterator<BodyPiece> it = snake.getPieces().end().operator--();
                  it != snake.getPieces().begin(); --it) {
