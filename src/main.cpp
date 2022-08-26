@@ -5,7 +5,7 @@
 #include <functional>
 #include <cmath>
 
-#define GAME_SPEED 50
+#define GAME_SPEED 70
 
 #define BODY_SIZE 50
 #define ROWS 30
