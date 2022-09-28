@@ -1,11 +1,11 @@
-#include <SFML/Graphics.hpp>
+    #include <SFML/Graphics.hpp>
 #include "../include/BodyFull.h"
 #include "../include/Food.h"
 #include <thread>
 #include <functional>
 #include <cmath>
 
-#define GAME_SPEED 70
+#define GAME_SPEED 7
 
 #define BODY_SIZE 50
 #define ROWS 30
@@ -26,6 +26,7 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(X_SIZE, Y_SIZE), "SnakeGame");
     sf::Font font;
     font.loadFromFile("04B_30__.TTF");
+    window.setFramerateLimit(60);
 
     sf::Text loseScreen;
     loseScreen.setCharacterSize(50);
